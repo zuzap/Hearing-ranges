@@ -1,0 +1,13 @@
+Species,Gatunek,LowRange,HighRange,Class
+Human,Cz³owiek,20,20000,mammal
+Tuna,Tuñczyk,50,1100,fish
+Chicken,Kurczak,125,2000,bird
+Goldfish,Z³ota rybka,20,3000,fish
+Bullfrog,Ropucha,100,3000,amphibia
+Canary,Kanarek,250,8000,bird
+Elephant,S³oñ,17,10500,mammal
+Parakeet,Papu¿ka,200,8500,bird
+Owl,Sowa,200,12000,bird
+Hedgehog,Je¿,250,45000,mammal
+Guinea pig,Œwinka morska,47,49000,mammal
+Rabbit,Królik,96,49000,mammal

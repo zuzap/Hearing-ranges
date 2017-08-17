@@ -1,0 +1,32 @@
+Species,Gatunek,LowRange,HighRange,Class
+Human,Cz³owiek,20,20000,mammal
+Tuna,Tuñczyk,50,1100,fish
+Chicken,Kurczak,125,2000,bird
+Goldfish,Z³ota rybka,20,3000,fish
+Bullfrog,Ropucha,100,3000,amphibia
+Canary,Kanarek,250,8000,bird
+Elephant,S³oñ,17,10500,mammal
+Parakeet,Papu¿ka,200,8500,bird
+Owl,Sowa,200,12000,bird
+Chinchilla,Szynszyla,52,33000,mammal
+Horse,Koñ,55,33500,mammal
+Cow,Krowa,23,35000,mammal
+Raccoon,Szop,100,40000,mammal
+Sheep,Owca,125,42500,mammal
+Dog,Pies,64,44000,mammal
+Ferret,Fretka,16,44000,mammal
+Hedgehog,Je¿,250,45000,mammal
+Guinea pig,Œwinka morska,47,49000,mammal
+Rabbit,Królik,96,49000,mammal
+Sea lion,Lew morski,200,50000,mammal
+Gerbil,Myszoskoczek,56,60000,mammal
+Opossum,Opos,500,64000,mammal
+Albino rat,Szczur laboratoryjny,390,72000,mammal
+Hooded rat,Szczur,530,75000,mammal
+Cat,Kot,55,77000,mammal
+Mouse,Mysz,900,79000,mammal
+Little brown bat,Nocek myszouchy,10300,115000,mammal
+Beluga whale,Bia³ucha,1000,123000,mammal
+Bottlenose dolphin,Delfin butlonosy,150,150000,mammal
+Porpoise,Morœwin,75,150000,mammal
+Catfish,Sum,50,4000,fish

@@ -1,0 +1,18 @@
+h2 {
+	font-size: 24;
+}
+
+path {
+	fill: none;
+}
+
+.x .tick {
+	stroke: black;
+	stroke-width: 1px;
+}
+
+.datalines {
+	stroke: #D0D0D0;
+	stroke-width: 15px;
+	opacity: 1;
+}
