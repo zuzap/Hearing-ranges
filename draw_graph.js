@@ -1,5 +1,5 @@
-function draw(data){
 	"use strict";
+	function draw(data){
     var margin = 80,
     	width = 1400 - margin,
     	height = 600 - margin;
@@ -15,8 +15,7 @@ function draw(data){
     	.append("g")
     		.attr("class","chart");
 
-    d3.select('svg')
-        .selectAll('line')
+    svg.selectAll('line')
         .data(data)
         .enter()
         .append('line')
@@ -47,14 +46,12 @@ function draw(data){
         .scale(species_scale)
         .orient('left');
 
-    d3.select('svg')
-        .append('g')
+    svg.append('g')
         .attr('class','x axis')
         .attr('transform','translate(0,' + height + ')')
         .call(freq_axis);
 
-    d3.select('svg')
-        .append('g')
+    svg.append('g')
         .attr('class','y axis')
         .attr('transform','translate(' + margin + ',0)')
         .call(species_axis);
@@ -75,8 +72,7 @@ function draw(data){
 
     debugger
 
-    var labels = d3.select('svg')
-        .append("g")
+    var labels = svg.append("g")
         .attr('class','labels')
         .attr('transform','translate(' + margin + ',' + height + ')')
         .selectAll('g')
