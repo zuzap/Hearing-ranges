@@ -1,0 +1,47 @@
+text {
+  font-family: 'Lato',sans-serif;
+}
+
+.title {
+  font-family: 'Lato',sans-serif;
+  font-weight: normal;
+  text-align: left;
+  margin-left: 100px;
+}
+
+.bars {
+  stroke: black;
+  stroke-linecap: "butt"; /*butt, square, round*/
+}
+
+.bars.focus {
+  stroke-opacity: 1;
+}
+
+.bars.outside {
+  stroke-opacity: 0.2;
+}
+
+.bars.half {
+  stroke-opacity: 0.5;
+}
+
+.bars.within {
+  stroke-opacity: 0.8
+}
+
+text.bars {
+  stroke: none;
+  fill: white;
+  font-size: 10pt;
+  alignment-baseline: middle;
+}
+
+.vertlines {
+  stroke: black;
+  stroke-dasharray: 10
+}
+
+.axis {
+  font-size: 12px;
+}

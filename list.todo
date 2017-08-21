@@ -1,0 +1,22 @@
+ADDITIONS:
+[ ] add information about selected species
+    [ ] picture
+    [ ] hearing range
+    [ ] two sentences on how they use sound etc.
+
+[ ] add vocalisation range for each species, so that comparisons can be more interesting/
+    informative, e.g. a bat cannot hear human voice
+    [ ] add a player with examples
+
+[ ] enable selection by enviroment: water vs air
+
+[ ] enable sorting by lower and higher hearing limits
+
+FIXES:
+[x] make it possible to click on text on bars
+
+[ ]
+MORE DATA:
+[ ] vocalisation ranges
+[ ] species picture
+[ ] species information about using sound/hearing
