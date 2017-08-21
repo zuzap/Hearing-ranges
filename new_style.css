@@ -45,3 +45,29 @@ text.bars {
 .axis {
   font-size: 12px;
 }
+
+div.info {
+  background-color: #d9d9d9;
+  position: fixed;
+  top: 100px;
+  left: 900px;
+  width: 300px;
+  height: 300px;
+  padding: 20px;
+  font-family: "Lato", sans-serif;
+}
+
+#pic {
+  width: 200px;
+  display: block;
+  margin: auto;
+}
+
+#name {
+  font-size: 20px;
+}
+
+#description,
+#range {
+  font-size: 16px;
+}
