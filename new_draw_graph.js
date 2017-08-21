@@ -1,6 +1,6 @@
 var draw = function(dataset) {
-  var margin = {top:20, bottom:20, left:50, right:50};
-  var w = 1000 - margin.left - margin.right,
+  var margin = {top:50, bottom:20, left:50, right:50};
+  var w = 900 - margin.left - margin.right,
       h = 1000 - margin.top - margin.bottom;
 
   var barWidth = 24;
@@ -55,10 +55,10 @@ var draw = function(dataset) {
                 .tickFormat(function(d){
                   return xScale.tickFormat(5,d3.format(",d"))(d)
                 });
-                // .tickFormat(function(d){return d});
-  var yAxis = d3.axisLeft(yScale)
-                .tickFormat(function(d){return dataset[d].Species})
-                .tickSize(0);
+  var xAxisTop = d3.axisTop(xScale)
+                    .tickFormat(function(d){
+                      return xScale.tickFormat(5,d3.format(",d"))(d)
+                    });
 
 // vertical lines
   var vertline1 = svg.append("line")
@@ -82,12 +82,17 @@ var draw = function(dataset) {
       .attr("class","axis")
       .attr("transform","translate(0," + h + ")")
       .call(xAxis);
+  svg.append("g")
+      .attr("class","axis")
+      .call(xAxisTop)
+      .attr("transform","translate(0,-20)");
 
 // on-click behaviour
   d3.selectAll(".bars")
     .on("click", function(d) {
         var low = Number(d.LowRange),
             high = Number(d.HighRange);
+
         d3.selectAll(".bars").attr("class", function(d){
           if (Number(d.HighRange) < low || Number(d.LowRange) > high) {
             return "bars outside";
@@ -97,20 +102,26 @@ var draw = function(dataset) {
             return "bars within";
           }
         });
+
         d3.select(this).classed("focus",true).classed("within",false);
+
         vertline1.transition()
                   .duration(200)
                   .ease(d3.easeSin)
                   .attr("x1",xScale(d.LowRange))
                   .attr("x2",xScale(d.LowRange))
-                  .attr("visibility","visible")
+                  .attr("visibility","visible");
         vertline2.transition()
                   .duration(200)
                   .ease(d3.easeLinear)
                   .attr("x1",xScale(d.HighRange))
                   .attr("x2",xScale(d.HighRange))
-                  .attr("visibility","visible")
+                  .attr("visibility","visible");
 
+        d3.select("#name").text(d.Species);
+        d3.select("#range").text("Hearing range: " + d.LowRange + "Hz to " + d.HighRange + "Hz");
+        d3.select("#pic").attr("src",d.Picture);
+        d3.select("#description").text(d.Description);
     });
 
   d3.selectAll(".bars")
