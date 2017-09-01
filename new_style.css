@@ -9,9 +9,22 @@ text {
   margin-left: 100px;
 }
 
-.bars {
+.lead {
+  font-family: 'Lato',sans-serif;
+  font-weight: normal;
+  text-align: left;
+  margin-left: 100px;
+  margin-bottom: 50px;
+}
+
+#hear .bars {
   stroke: black;
   stroke-linecap: "butt"; /*butt, square, round*/
+}
+
+#voc .bars {
+	stroke: green;
+  stroke-linecap: "butt";
 }
 
 .bars.focus {
@@ -23,18 +36,19 @@ text {
 }
 
 .bars.half {
-  stroke-opacity: 0.5;
+  stroke-opacity: 0.45;
 }
 
 .bars.within {
-  stroke-opacity: 0.8
+  stroke-opacity: 0.7
 }
 
 text.bars {
   stroke: none;
-  fill: white;
+  fill: gray;
   font-size: 10pt;
   alignment-baseline: middle;
+  pointer-events: none;
 }
 
 .vertlines {
@@ -68,6 +82,7 @@ div.info {
 }
 
 #description,
-#range {
+#range,
+#vocrange {
   font-size: 16px;
 }
