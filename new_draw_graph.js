@@ -3,13 +3,9 @@ var draw = function(dataset) {
   var w = 900 - margin.left - margin.right,
       h = 1000 - margin.top - margin.bottom;
 
-  var barWidth = 24;
-//TODO: ffuohfeuohf
-// title text
-  d3.select("body")
-    .append("h2")
-      .text("Hearing ranges across species")
-      .attr("class","title");
+  var barWidth = 12;
+
+
 
   var svg = d3.select("body")
               .append("svg")
@@ -29,16 +25,33 @@ var draw = function(dataset) {
                 .padding(0.3);
 
 // draw bars
-  svg.selectAll("line")
+  ghearing = svg.append("g")
+                .attr("id","hear");
+
+  ghearing.selectAll("line")
       .data(dataset)
       .enter()
       .append("line")
         .style("stroke-width",barWidth)
         .attr("x1",function(d){return xScale(d.LowRange)})
         .attr("x2",function(d){return xScale(d.HighRange)})
-        .attr("y1",function(d,i){return yScale(i)})
-        .attr("y2",function(d,i){return yScale(i)})
-        .attr("class","bars")
+        .attr("y1",function(d,i){return yScale(i)-barWidth/2})
+        .attr("y2",function(d,i){return yScale(i)-barWidth/2})
+        .attr("class","bars");
+
+  gvocal = svg.append("g")
+              .attr("id","voc");
+
+  gvocal.selectAll("line")
+      .data(dataset)
+      .enter()
+      .append("line")
+        .style("stroke-width",barWidth)
+        .attr("x1",function(d){return xScale(d.VocLowRange)})
+        .attr("x2",function(d){return xScale(d.VocHighRange)})
+        .attr("y1",function(d,i){return yScale(i)+barWidth/2})
+        .attr("y2",function(d,i){return yScale(i)+barWidth/2})
+        .attr("class","bars");
 
 // add text to bars
   svg.selectAll("text")
@@ -88,22 +101,23 @@ var draw = function(dataset) {
       .attr("transform","translate(0,-20)");
 
 // on-click behaviour
-  d3.selectAll(".bars")
+
+  ghearing.selectAll(".bars")
     .on("click", function(d) {
         var low = Number(d.LowRange),
             high = Number(d.HighRange);
 
         d3.selectAll(".bars").attr("class", function(d){
-          if (Number(d.HighRange) < low || Number(d.LowRange) > high) {
+          if (Number(d.VocHighRange) < low || Number(d.VocLowRange) > high) {
             return "bars outside";
-          } else if (Number(d.LowRange)<low || Number(d.HighRange)>high) {
+          } else if (Number(d.VocLowRange)<low || Number(d.VocHighRange)>high) {
             return "bars half";
           } else {
             return "bars within";
           }
         });
 
-        d3.select(this).classed("focus",true).classed("within",false);
+        d3.select(this).classed("focus",true).classed("within",false).classed("half",false);
 
         vertline1.transition()
                   .duration(200)
@@ -113,16 +127,55 @@ var draw = function(dataset) {
                   .attr("visibility","visible");
         vertline2.transition()
                   .duration(200)
-                  .ease(d3.easeLinear)
+                  .ease(d3.easeSin)
                   .attr("x1",xScale(d.HighRange))
                   .attr("x2",xScale(d.HighRange))
                   .attr("visibility","visible");
 
         d3.select("#name").text(d.Species);
         d3.select("#range").text("Hearing range: " + d.LowRange + "Hz to " + d.HighRange + "Hz");
+        d3.select("#vocrange").text("Vocalisation range: " + d.VocLowRange + "Hz to " + d.VocHighRange + "Hz");
         d3.select("#pic").attr("src",d.Picture);
         d3.select("#description").text(d.Description);
     });
+
+    gvocal.selectAll(".bars")
+      .on("click", function(d) {
+          var low = Number(d.VocLowRange),
+              high = Number(d.VocHighRange);
+
+          d3.selectAll(".bars").attr("class", function(d){
+            if (Number(d.HighRange) < low || Number(d.LowRange) > high) {
+              return "bars outside";
+            } else if (Number(d.LowRange)<low || Number(d.HighRange)>high) {
+              return "bars half";
+            } else {
+              return "bars within";
+            }
+          });
+
+          console.log(this)
+          d3.select(this).classed("focus",true).classed("within",false).classed("half",false);
+
+          vertline1.transition()
+                    .duration(200)
+                    .ease(d3.easeSin)
+                    .attr("x1",xScale(d.VocLowRange))
+                    .attr("x2",xScale(d.VocLowRange))
+                    .attr("visibility","visible");
+          vertline2.transition()
+                    .duration(200)
+                    .ease(d3.easeSin)
+                    .attr("x1",xScale(d.VocHighRange))
+                    .attr("x2",xScale(d.VocHighRange))
+                    .attr("visibility","visible");
+
+          d3.select("#name").text(d.Species);
+          d3.select("#range").text("Hearing range: " + d.LowRange + "Hz to " + d.HighRange + "Hz");
+          d3.select("#vocrange").text("Vocalisation range: " + d.VocLowRange + "Hz to " + d.VocHighRange + "Hz");
+          d3.select("#pic").attr("src",d.Picture);
+          d3.select("#description").text(d.Description);
+      });
 
   d3.selectAll(".bars")
     .on("mouseover", function(){

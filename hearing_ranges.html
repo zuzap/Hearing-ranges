@@ -11,15 +11,20 @@
 </head>
 
 <body>
+	<h2 class="title">Who can hear you?</h2>
+	<div class="lead">
+		Some text and graph explanation, possibly legend
+	</div>
 	<div class="info">
 		<p id="name"></p>
 		<img src="" id="pic">
 		<p id="range"></p>
+		<p id="vocrange"></p>
 		<p id="description"></p>
 	</div>
 	<script type="text/javascript">
 	// Read .csv file and run callback function which draws the graph
-		d3.csv("wikipedia.csv", draw);
+		d3.csv("wikipedia2.csv", draw);
 	</script>
 </body>
 </html>

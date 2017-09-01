@@ -16,3 +16,7 @@ path {
 	stroke-width: 15px;
 	opacity: 1;
 }
+
+#voc line {
+	stroke: red;
+}
