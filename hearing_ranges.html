@@ -4,11 +4,11 @@
 <head>
 	<title>Hearing ranges</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="new_style.css">
+	<link rel="stylesheet" type="text/css" href="css/new_style.css">
 	<link href="https://fonts.googleapis.com/css?family=Encode+Sans|Lato|Quicksand|Roboto|Slabo+13px|Slabo+27px" rel="stylesheet">
   <script type="text/javascript" src="d3/d3.js"></script>
   <!-- <script src="draw_graph_hear.js"></script> -->
-	<script src="draw_graph_hearvoc.js"></script>
+	<script src="draw_graph_hear.js"></script>
 </head>
 
 <body>
@@ -20,12 +20,11 @@
 		<p id="name"></p>
 		<img src="" id="pic">
 		<p id="range"></p>
-		<p id="vocrange"></p>
 		<p id="description"></p>
 	</div>
 	<script type="text/javascript">
 	// Read .csv file and run callback function which draws the graph
-		d3.csv("wikipedia2.csv", draw);
+		d3.csv("data/wikipedia2.csv", draw);
 	</script>
 </body>
 </html>

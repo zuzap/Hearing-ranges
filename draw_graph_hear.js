@@ -35,7 +35,7 @@ var draw = function(dataset) {
         .attr("x2",function(d){return xScale(d.HighRange)})
         .attr("y1",function(d,i){return yScale(i)})
         .attr("y2",function(d,i){return yScale(i)})
-        .attr("class","bars");
+        .attr("class",function(d){return "bars "+d.Type});
 
 // add text to bars
   svg.selectAll("text")
@@ -91,17 +91,27 @@ var draw = function(dataset) {
         var low = Number(d.LowRange),
             high = Number(d.HighRange);
 
-        d3.selectAll(".bars").attr("class", function(d){
+// FIXME: the following code should, for each line:
+//          - keep any previous classes, such as "bars" and "signal"/"receiver"
+//          - only keep ONE relevant class out of the three: "whithin", "half", "outside", based on the conditions below
+
+        d3.selectAll(".bars").each(function(d) {
           if (Number(d.VocHighRange) < low || Number(d.VocLowRange) > high) {
-            return "bars outside";
+            d3.select(this).classed("outside", true)
+            d3.select(this).classed("half", false)
+            d3.select(this).classed("within", false)
           } else if (Number(d.VocLowRange)<low || Number(d.VocHighRange)>high) {
-            return "bars half";
+            d3.select(this).classed("outside", false)
+            d3.select(this).classed("half", true)
+            d3.select(this).classed("within", false)
           } else {
-            return "bars within";
+            d3.select(this).classed("outside", false)
+            d3.select(this).classed("half", false)
+            d3.select(this).classed("within", true)
           }
         });
 
-        d3.select(this).classed("focus",true).classed("within",false).classed("half",false);
+        d3.select(this).classed("focus",true).classed("within",false).classed("half",false).classed("outside",false);
 
         vertline1.transition()
                   .duration(200)
@@ -118,7 +128,6 @@ var draw = function(dataset) {
 
         d3.select("#name").text(d.Species);
         d3.select("#range").text("Hearing range: " + d.LowRange + "Hz to " + d.HighRange + "Hz");
-        d3.select("#vocrange").text("Vocalisation range: " + d.VocLowRange + "Hz to " + d.VocHighRange + "Hz");
         d3.select("#pic").attr("src",d.Picture);
         d3.select("#description").text(d.Description);
     });
