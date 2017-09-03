@@ -17,14 +17,16 @@ text {
   margin-bottom: 50px;
 }
 
-#hear .bars {
-  stroke: black;
+.bars {
   stroke-linecap: "butt"; /*butt, square, round*/
 }
 
-#voc .bars {
-	stroke: green;
-  stroke-linecap: "butt";
+.bars.receiver {
+  stroke: black;
+}
+
+.bars.signal {
+  stroke: red;
 }
 
 .bars.focus {
@@ -45,7 +47,7 @@ text {
 
 text.bars {
   stroke: none;
-  fill: gray;
+  fill: white;
   font-size: 10pt;
   alignment-baseline: middle;
   pointer-events: none;
@@ -82,7 +84,6 @@ div.info {
 }
 
 #description,
-#range,
-#vocrange {
+#range {
   font-size: 16px;
 }
