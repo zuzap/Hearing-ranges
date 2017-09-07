@@ -15,16 +15,18 @@
 	<h2 class="title">Who can hear you?</h2>
 	<div class="lead">
 		Some text and graph explanation, possibly legend
+		In what ways other than frequency range hearing can different among species? (different ranges of increased sensitivity?)
+		Localisation - cows and horses are terrible at it!
 	</div>
 	<div class="info">
 		<p id="name"></p>
-		<img src="" id="pic">
+		<img id="pic">
 		<p id="range"></p>
 		<p id="description"></p>
 	</div>
 	<script type="text/javascript">
 	// Read .csv file and run callback function which draws the graph
-		d3.csv("data/wikipedia2.csv", draw);
+		d3.csv("data/ranges.csv", draw);
 	</script>
 </body>
 </html>

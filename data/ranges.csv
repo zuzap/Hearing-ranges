@@ -1,0 +1,17 @@
+Species,LowRange,HighRange,Type,Class,Environment,Picture,Description,References
+Human,20,20000,receiver,mammal,air,img/sounds7.jpg,People have ears and can make sounds too.,
+Dog,64,44000,receiver,mammal,air,img/dog6.jpg,Maybe don't play your dog heavy metal.,
+Cat,48,85000,receiver,mammal,air,img/cat1.jpg,Can hear high-pitched rodent calls,Heffner and Heffner 1985 (at 70dB SPL)
+Chicken,125,2000,receiver,bird,air,,,
+Elephant,17,10500,receiver,mammal,air,,,
+Horse,55,33500,receiver,mammal,air,,,
+Cow,23,35000,receiver,mammal,air,,,
+Raccoon,100,40000,receiver,mammal,air,,,
+Sheep,125,42500,receiver,mammal,air,,,
+Little brown bat,10300,115000,receiver,mammal,air,,jamming,
+Sea lion,200,50000,receiver,mammal,water,,,
+Mouse,900,79000,receiver,mammal,air,,,
+Beluga whale,1000,123000,receiver,mammal,water,,,
+Bottlenose dolphin,150,150000,receiver,mammal,water,,,
+Porpoise,75,150000,receiver,mammal,water,,,
+Human speech,100,2000,signal,mammal,air,img/sounds7.jpg,People have ears and can make sounds too.,
