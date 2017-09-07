@@ -1,7 +1,7 @@
 var draw = function(dataset) {
   var margin = {top:50, bottom:20, left:50, right:50};
   var w = 900 - margin.left - margin.right,
-      h = 1000 - margin.top - margin.bottom;
+      h = 600 - margin.top - margin.bottom;
 
   var barWidth = 24;
 
@@ -91,16 +91,13 @@ var draw = function(dataset) {
         var low = Number(d.LowRange),
             high = Number(d.HighRange);
 
-// FIXME: the following code should, for each line:
-//          - keep any previous classes, such as "bars" and "signal"/"receiver"
-//          - only keep ONE relevant class out of the three: "whithin", "half", "outside", based on the conditions below
-
         d3.selectAll(".bars").each(function(d) {
-          if (Number(d.VocHighRange) < low || Number(d.VocLowRange) > high) {
+          d3.select(this).classed("focus",false);
+          if (Number(d.HighRange) < low || Number(d.LowRange) > high) {
             d3.select(this).classed("outside", true)
             d3.select(this).classed("half", false)
             d3.select(this).classed("within", false)
-          } else if (Number(d.VocLowRange)<low || Number(d.VocHighRange)>high) {
+          } else if (Number(d.LowRange)<low || Number(d.HighRange)>high) {
             d3.select(this).classed("outside", false)
             d3.select(this).classed("half", true)
             d3.select(this).classed("within", false)
@@ -128,6 +125,7 @@ var draw = function(dataset) {
 
         d3.select("#name").text(d.Species);
         d3.select("#range").text("Hearing range: " + d.LowRange + "Hz to " + d.HighRange + "Hz");
+        // d3.select("#pic").style("background-image","url('"+d.Picture+"')")
         d3.select("#pic").attr("src",d.Picture);
         d3.select("#description").text(d.Description);
     });
