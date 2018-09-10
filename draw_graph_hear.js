@@ -83,6 +83,12 @@ var draw = function(dataset) {
       .attr("class","axis")
       .call(xAxisTop)
       .attr("transform","translate(0,-20)");
+  svg.append("text")
+      .attr("class", "xlabel")
+      .attr("text-anchor", "end")
+      .attr("x", w)
+      .attr("y", 0)
+      .text("Frequency in Hz");
 
 // on-click behaviour
 
