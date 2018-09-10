@@ -142,4 +142,27 @@ var draw = function(dataset) {
       d3.select(this).style("cursor","pointer");
     });
 
+    // sorting
+    // TODO: doesn't work, see test.html
+    var sortBars = function() {
+      console.log("selecting")
+      dataset.sort(function(a,b) {
+        return d3.ascending(Number(a.LowRange),Number(b.LowRange));
+      });
+      yScale.domain(dataset.map(function(d,i) {
+        return i;
+      }));
+      console.log(dataset.map(function(d,i) {return i}))
+
+      svg.selectAll(".bars")
+        .transition()
+        .duration(500)
+        .attr("y1",function(d,i){return yScale(i)})
+        .attr("y2",function(d,i){return yScale(i)})
+      };
+
+    d3.select("#lowSort").on("click",sortBars)
+
+
+
 }
